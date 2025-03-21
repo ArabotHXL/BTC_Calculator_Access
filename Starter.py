@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import os
 import subprocess
+import gdown
 
 # Step 1: 下载 JSON 文件
 file_id = "1iQBMilSDK-9KiNsyHpWKTaXpSAEAQ38h"
