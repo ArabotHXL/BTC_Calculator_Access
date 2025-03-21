@@ -1,7 +1,14 @@
+# 安装必要的库
+!pip install pandas numpy 
+!pip install inquirer
+!pip install ipywidgets --upgrade
+
 import gspread
 from google.colab import auth
 from google.auth import default
 import os
+import subprocess
+
 
 # Step 1: 授权 Google Drive 访问
 auth.authenticate_user()
@@ -49,8 +56,8 @@ if user_id:
             print(f"❌ 克隆失败: {e}")
 
         # Step 7: 执行计算器
-        %cd BTC_Calculator
-        %run mining_profit_calculator.py
+        os.chdir('BTC_Calculator')
+        subprocess.run(['python3', 'mining_profit_calculator.py'])
 
         # Step 8: 安全删除 Token
         del os.environ['GITHUB_TOKEN']
