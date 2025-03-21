@@ -1,8 +1,3 @@
-# 安装必要的库
-!pip install pandas numpy 
-!pip install inquirer
-!pip install ipywidgets --upgrade
-
 import gspread
 from google.colab import auth
 from google.auth import default
