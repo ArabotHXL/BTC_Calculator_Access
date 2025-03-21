@@ -1,10 +1,13 @@
+from google.colab import drive
+drive.mount('/content/drive')
+
 import gspread
 from google.oauth2.service_account import Credentials
 import os
 import subprocess
 
 # Step 1: 导入 Service Account 文件
-SERVICE_ACCOUNT_FILE = '/content/apt-cycling-430123-g9-716084faf348.json'  # 替换为你的 JSON 文件路径
+SERVICE_ACCOUNT_FILE = '/content/drive/MyDrive/apt-cycling-430123-g9-716084faf348.json'  # 替换为你的 JSON 文件路径
 
 # Step 2: 使用 Service Account 凭证授权
 credentials = Credentials.from_service_account_file(
