@@ -1,20 +1,21 @@
-from google.colab import drive
-drive.mount('/content/drive')
-
 import gspread
 from google.oauth2.service_account import Credentials
 import os
 import subprocess
 
-# Step 1: 导入 Service Account 文件
-SERVICE_ACCOUNT_FILE = '/content/drive/MyDrive/apt-cycling-430123-g9-716084faf348.json'  # 替换为你的 JSON 文件路径
+# Step 1: 下载 JSON 文件
+file_id = "1iQBMilSDK-9KiNsyHpWKTaXpSAEAQ38h"
+output = "/content/apt-cycling-430123-g9-716084faf348.json"
+gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
 
-# Step 2: 使用 Service Account 凭证授权
+# Step 2: 授权 Google Sheets
+SERVICE_ACCOUNT_FILE = output
 credentials = Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE,
     scopes=['https://www.googleapis.com/auth/spreadsheets']
 )
 gc = gspread.authorize(credentials)
+
 
 # Step 3: 打开 Google Sheets
 spreadsheet_url = 'https://docs.google.com/spreadsheets/d/15maOE_0HzWA5upDmlYAK61GPVKUrhX6NURbmQcB5N2w/edit#gid=0'
