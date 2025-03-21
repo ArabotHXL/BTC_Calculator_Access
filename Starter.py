@@ -1,7 +1,7 @@
 # 安装必要的库
-#!pip install pandas numpy 
-#!pip install inquirer
-#!pip install ipywidgets --upgrade
+!pip install pandas numpy 
+!pip install inquirer
+!pip install ipywidgets --upgrade
 
 import gspread
 from google.colab import auth
@@ -45,7 +45,13 @@ if user_id:
     GITHUB_TOKEN = get_token_by_unique_id(user_id)
     if GITHUB_TOKEN:
         os.environ['GITHUB_TOKEN'] = GITHUB_TOKEN
-        !git clone https://$GITHUB_TOKEN@github.com/ArabotHXL/BTC.git BTC_Calculator
+        import subprocess
+        repo_url = f"https://{GITHUB_TOKEN}@github.com/ArabotHXL/BTC.git"
+        try:
+            subprocess.run(['git', 'clone', repo_url, 'BTC_Calculator'], check=True)
+            print("✅ 仓库克隆成功！")
+        except subprocess.CalledProcessError as e:
+            print(f"❌ 克隆失败: {e}")
 
         # Step 7: 执行计算器
         %cd BTC_Calculator
