@@ -1,0 +1,8 @@
+pandas
+numpy
+inquirer
+ipywidgets
+gspread
+google-auth
+gdown
+requests
